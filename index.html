@@ -252,21 +252,7 @@
       }
     });
 
-    // Handle gallery form submission
-    document.getElementById('galleryForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-
-      // Send photos to the backend (replace with your API endpoint)
-      const response = await fetch('/api/gallery', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert('Photos uploaded successfully!');
-      } else {
-        alert('Failed to upload photos. Please try again.');
+    
       }
     });
   </script>
