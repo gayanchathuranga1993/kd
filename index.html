@@ -6,67 +6,72 @@
   <title>Ceylon ODC - Discover Sri Lanka</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
     }
     .hero {
-      background: url(dinuka-lankaloka-iduEaeBB_rQ-unsplash.jpg) no-repeat center center/cover;
-    }
-
-    /* Custom Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-fadeIn {
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .hero-content {
-      animation: slideIn 1.5s ease-out forwards;
-    }
-
-    .hover-scale {
-      transition: transform 0.3s ease;
-    }
-    .hover-scale:hover {
-      transform: scale(1.05);
+      background: url(hero.jpg) no-repeat center center/cover;
     }
   </style>
 </head>
 <body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="text-2xl font-bold text-blue-600">Ceylon ODC</a>
+      <nav class="space-x-6">
+        <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="#custom-package" class="text-gray-700 hover:text-blue-600">Create Package</a>
+        <a href="#blog" class="text-gray-700 hover:text-blue-600">Blog</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  
-  <!-- Hero Section -->
-  <section class="hero h-screen flex items-center justify-center text-center text-white">
-    <div class="bg-black bg-opacity-50 p-8 rounded-lg hero-content">
-      <h1 class="text-5xl font-bold mb-4 animate-fadeIn">Discover Sri Lanka</h1>
-      <p class="text-xl mb-8 animate-fadeIn" data-aos-delay="500">Your next adventure awaits with Ceylon ODC.</p>
-      <a href="#packages" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 animate-fadeIn" data-aos-delay="1000">Explore Tours</a>
+  <!-- Home Page -->
+  <section id="home" class="hero h-screen flex items-center justify-center text-center text-white">
+    <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+      <h1 class="text-5xl font-bold mb-4">Discover Sri Lanka</h1>
+      <p class="text-xl mb-8">Your next adventure awaits with Ceylon ODC.</p>
+      <a href="#custom-package" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Create Your Package</a>
     </div>
   </section>
 
-  
+  <!-- Blog Section -->
+  <section id="blog" class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Travel Blog</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Blog Post 1 -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="blog1.jpg" alt="Kandy" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Exploring Kandy</h3>
+          <p class="text-gray-700 mb-4">Discover the cultural heart of Sri Lanka.</p>
+          <button onclick="openBlogModal('Exploring Kandy', 'Kandy is a city in the central highlands of Sri Lanka, known for its rich history and cultural significance. The Temple of the Tooth Relic is a must-visit.')" class="text-blue-600 hover:underline">Read More</button>
+        </div>
+      </div>
+      <!-- Blog Post 2 -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="blog2.jpg" alt="Ella" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Hiking in Ella</h3>
+          <p class="text-gray-700 mb-4">Adventure awaits in the hills of Ella.</p>
+          <button onclick="openBlogModal('Hiking in Ella', 'Ella is a small town in the Badulla District, known for its lush green hills and stunning waterfalls. Popular hikes include Ella Rock and Little Adam\'s Peak.')" class="text-blue-600 hover:underline">Read More</button>
+        </div>
+      </div>
+      <!-- Blog Post 3 -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="blog3.jpg" alt="Galle" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Historic Galle Fort</h3>
+          <p class="text-gray-700 mb-4">Step back in time at Galle Fort.</p>
+          <button onclick="openBlogModal('Historic Galle Fort', 'Galle Fort is a UNESCO World Heritage Site, known for its colonial architecture and stunning ocean views.')" class="text-blue-600 hover:underline">Read More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Custom Package Page -->
   <section id="custom-package" class="container mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold text-center mb-8">Create Your Custom Package</h2>
@@ -98,6 +103,25 @@
       </form>
     </div>
   </section>
+
+  <!-- Blog Modal -->
+  <div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+    <div class="bg-white p-8 rounded-lg w-11/12 md:w-1/2">
+      <h2 id="blogTitle" class="text-2xl font-bold mb-4"></h2>
+      <p id="blogContent" class="text-gray-700 mb-4"></p>
+      <button onclick="closeBlogModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Close</button>
+    </div>
+  </div>
+
+  <!-- WhatsApp Chat Button -->
+  <div id="whatsappChat" class="fixed bottom-4 right-4">
+    <a href="https://wa.me/94771234567?text=Hi%20Ceylon%20ODC,%20I%20have%20a%20question" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
+        <path d="M12 2a10 10 0 0 1 8.17 15.8l1.9 1.9a1 1 0 0 1-1.42 1.42l-1.9-1.9A10 10 0 1 1 12 2zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm3.71 10.29a1 1 0 0 1-1.42 0L12 13.41l-2.29 2.3a1 1 0 1 1-1.42-1.42l2.3-2.29-2.3-2.29a1 1 0 1 1 1.42-1.42L12 10.59l2.29-2.3a1 1 0 1 1 1.42 1.42l-2.3 2.29 2.3 2.29a1 1 0 0 1 0 1.42z"/>
+      </svg>
+      Chat on WhatsApp
+    </a>
+  </div>
 
   <script>
     // Pricing for each place (per day)
@@ -150,107 +174,8 @@
 
       alert(`Package Created!\nPlaces: ${selectedPlaces.join(', ')}\nStart Date: ${startDate}\nEnd Date: ${endDate}\nBudget: ${budget}`);
     });
-  </script>
-</body>
-</html>
 
- <!-- Blog Modal -->
-<div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
-  <div class="bg-white p-8 rounded-lg w-11/12 md:w-1/2">
-    <h2 id="blogTitle" class="text-2xl font-bold mb-4">Discover the Wonders of Sri Lanka</h2>
-    <p id="blogContent" class="text-gray-700 mb-4">
-      Sri Lanka, often referred to as the "Pearl of the Indian Ocean," is a tropical paradise that offers a diverse range of experiences for travelers. From pristine beaches and lush tea plantations to ancient temples and wildlife safaris, Sri Lanka is a destination that captivates the hearts of all who visit.
-
-      **Cultural Heritage**: Sri Lanka is home to a rich cultural heritage that dates back over 2,500 years. The ancient city of Sigiriya, a UNESCO World Heritage Site, is a must-visit. Known as the "Lion Rock," this massive fortress rises dramatically from the surrounding plains and offers breathtaking views from its summit. Another iconic site is the Temple of the Tooth Relic in Kandy, which houses a sacred tooth of the Buddha and is a significant pilgrimage site for Buddhists.
-
-      **Natural Beauty**: The island's natural beauty is unparalleled. The Ella region, nestled in the central highlands, is famous for its rolling hills, tea plantations, and stunning waterfalls like Ravana Falls. For beach lovers, the golden sands of Mirissa and Unawatuna offer the perfect escape, while Yala National Park provides an opportunity to spot leopards, elephants, and a variety of bird species.
-
-      **Adventure and Wildlife**: Sri Lanka is a haven for adventure enthusiasts. Hike to the top of Adam's Peak for a sunrise view that will leave you in awe, or explore the Sinharaja Rainforest, a biodiversity hotspot. Wildlife lovers can embark on a safari in Udawalawe National Park, where herds of elephants roam freely, or visit Pinnawala Elephant Orphanage to learn about elephant conservation.
-
-      **Culinary Delights**: Sri Lankan cuisine is a flavorful blend of spices, coconut, and fresh ingredients. Don't miss out on trying hoppers (bowl-shaped pancakes), kottu roti (chopped roti with vegetables and meat), and string hoppers (steamed rice noodles). Pair your meal with a cup of Ceylon tea, renowned worldwide for its rich flavor.
-
-      **Warm Hospitality**: One of the most memorable aspects of Sri Lanka is the warmth and hospitality of its people. Whether you're staying in a luxury resort or a homestay, you'll be greeted with genuine smiles and a willingness to share their culture and traditions.
-
-      **Why Visit Sri Lanka?**: Sri Lanka is a destination that offers something for everyone. Whether you're seeking adventure, relaxation, or cultural immersion, this island nation promises an unforgettable experience. Pack your bags and get ready to explore the wonders of Sri Lanka!
-    </p>
-    <button onclick="closeBlogModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Close</button>
-  </div>
-</div>
-
-  <!-- WhatsApp Chat Button -->
-  <div id="whatsappChat" class="fixed bottom-4 right-4">
-    <a href="https://wa.me/94771234567?text=Hi%20Ceylon%20ODC,%20I%20have%20a%20question" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 flex items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
-        <path d="M12 2a10 10 0 0 1 8.17 15.8l1.9 1.9a1 1 0 0 1-1.42 1.42l-1.9-1.9A10 10 0 1 1 12 2zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm3.71 10.29a1 1 0 0 1-1.42 0L12 13.41l-2.29 2.3a1 1 0 1 1-1.42-1.42l2.3-2.29-2.3-2.29a1 1 0 1 1 1.42-1.42L12 10.59l2.29-2.3a1 1 0 1 1 1.42 1.42l-2.3 2.29 2.3 2.29a1 1 0 0 1 0 1.42z"/>
-      </svg>
-      Chat on WhatsApp
-    </a>
-  </div>
-
-  <!-- Backend Server (Node.js Example) -->
-  <script type="module">
-    // Example backend server for WhatsApp bot
-    const express = require('express');
-    const twilio = require('twilio');
-    const app = express();
-    const port = 3000;
-
-    // Twilio credentials
-    const accountSid = 'your_account_sid';
-    const authToken = 'your_auth_token';
-    const client = twilio(accountSid, authToken);
-
-    // Handle incoming WhatsApp messages
-    app.post('/whatsapp/webhook', (req, res) => {
-      const incomingMessage = req.body.Body;
-      const from = req.body.From;
-
-      // Send an automated reply
-      client.messages.create({
-        body: `Hi! Thanks for messaging Ceylon ODC. We'll get back to you shortly.`,
-        from: 'whatsapp:+94777549720', // <button class="bg-sky-500 hover:bg-sky-700 ...">Save changes</button> 
-        to: from,
-      });
-
-      res.status(200).send('Message received');
-    });
-
-    // Start the server
-    app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
-  </script>
-</body>
-</html> 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-6 text-center">
-      <p>&copy; 2023 Ceylon ODC. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Initialize AOS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-
-    // Dynamic Package Form
-    document.getElementById('customPackageForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const places = Array.from(document.getElementById('places').selectedOptions).map(option => option.value);
-      const people = document.getElementById('people').value;
-      const startDate = document.getElementById('startDate').value;
-
-      document.getElementById('packageTitle').innerText = `Custom Package for ${people} People`;
-      document.getElementById('packageDetails').innerText = `Places: ${places.join(', ')}\nStart Date: ${startDate}`;
-      document.getElementById('generatedPackage').classList.remove('hidden');
-    });
-
-    // Book Package
-    function bookPackage() {
-      alert('Booking confirmed! We will send you an email with the details.');
-      // Send email notification (backend integration required)
-    }
-
-    // Blog Modal
+    // Blog Modal Functions
     function openBlogModal(title, content) {
       document.getElementById('blogTitle').innerText = title;
       document.getElementById('blogContent').innerText = content;
@@ -259,19 +184,6 @@
 
     function closeBlogModal() {
       document.getElementById('blogModal').classList.add('hidden');
-    }
-
-    // Chatbot
-    function toggleChatbot() {
-      document.getElementById('chatbotWindow').classList.toggle('hidden');
-    }
-
-    function sendChatbotMessage() {
-      const input = document.getElementById('chatbotInput').value;
-      const messages = document.getElementById('chatbotMessages');
-      messages.innerHTML += `<div class="text-right"><p class="bg-blue-100 p-2 rounded-lg inline-block">${input}</p></div>`;
-      document.getElementById('chatbotInput').value = '';
-      messages.scrollTop = messages.scrollHeight;
     }
   </script>
 </body>
