@@ -154,24 +154,7 @@
 </body>
 </html>
 
- function openBlogModal(title, content) {
-  document.getElementById('blogTitle').innerText = title;
-  document.getElementById('blogContent').innerText = content;
-  document.getElementById('blogModal').classList.remove('hidden');
-}
-
-function closeBlogModal() {
-  document.getElementById('blogModal').classList.add('hidden');
-} 
-<div class="bg-white rounded-lg shadow-lg overflow-hidden">
-  <img src="sri-lanka-blog.jpg" alt="Sri Lanka" class="w-full h-48 object-cover">
-  <div class="p-6">
-    <h3 class="text-xl font-bold mb-2">Discover the Wonders of Sri Lanka</h3>
-    <p class="text-gray-700 mb-4">Explore the cultural heritage, natural beauty, and culinary delights of Sri Lanka.</p>
-    <button onclick="openBlogModal('Discover the Wonders of Sri Lanka', 'Sri Lanka, often referred to as the \"Pearl of the Indian Ocean,\" is a tropical paradise that offers a diverse range of experiences for travelers...')" class="text-blue-600 hover:underline">Read More</button>
-  </div>
-</div>
-<!-- Blog Modal -->
+ <!-- Blog Modal -->
 <div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
   <div class="bg-white p-8 rounded-lg w-11/12 md:w-1/2">
     <h2 id="blogTitle" class="text-2xl font-bold mb-4">Discover the Wonders of Sri Lanka</h2>
@@ -192,19 +175,7 @@ function closeBlogModal() {
     </p>
     <button onclick="closeBlogModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Close</button>
   </div>
-</div> 
-  <!-- Header -->
-  <header class="bg-white shadow-lg">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-blue-600">Ceylon ODC</a>
-      <nav class="space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
-        <a href="custom-package.html" class="text-gray-700 hover:text-blue-600">Create Package</a>
-        <a href="#blog" class="text-gray-700 hover:text-blue-600">Blog</a>
-        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
-      </nav>
-    </div>
-  </header>
+</div>
 
   <!-- WhatsApp Chat Button -->
   <div id="whatsappChat" class="fixed bottom-4 right-4">
