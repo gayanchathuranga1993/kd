@@ -77,9 +77,33 @@
     </div>
   </section>
 
-   Create Your Package</a>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceylon ODC - Create Package</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-blue-600">Ceylon ODC</a>
+      <nav class="space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="custom-package.html" class="text-gray-700 hover:text-blue-600">Create Package</a>
+        <a href="#blog" class="text-gray-700 hover:text-blue-600">Blog</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
   <!-- Custom Package Page -->
   <section id="custom-package" class="container mx-auto px-6 py-12">
@@ -89,16 +113,12 @@
         <div class="mb-4">
           <label class="block text-gray-700 mb-2">Select Places</label>
           <div class="space-y-2">
-            <label class="flex items-center"><input type="checkbox" name="places" value="Sigiriya" class="mr-2">Sigiriya</label>
-            <label class="flex items-center"><input type="checkbox" name="places" value="Yala" class="mr-2">Yala National Park</label>
-            <label class="flex items-center"><input type="checkbox" name="places" value="Kandy" class="mr-2">Kandy</label>
-            <label class="flex items-center"><input type="checkbox" name="places" value="Galle" class="mr-2">Galle Fort</label>
-            <label class="flex items-center"><input type="checkbox" name="places" value="Mirissa" class="mr-2">Mirissa Beach</label>
+            <label class="flex items-center"><input type="checkbox" name="places" value="Sigiriya" class="mr-2">Sigiriya ($50/day)</label>
+            <label class="flex items-center"><input type="checkbox" name="places" value="Yala" class="mr-2">Yala National Park ($70/day)</label>
+            <label class="flex items-center"><input type="checkbox" name="places" value="Kandy" class="mr-2">Kandy ($40/day)</label>
+            <label class="flex items-center"><input type="checkbox" name="places" value="Galle" class="mr-2">Galle Fort ($30/day)</label>
+            <label class="flex items-center"><input type="checkbox" name="places" value="Mirissa" class="mr-2">Mirissa Beach ($60/day)</label>
           </div>
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-2">Budget (USD)</label>
-          <input type="number" name="budget" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-600" required>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 mb-2">Start Date</label>
@@ -108,11 +128,69 @@
           <label class="block text-gray-700 mb-2">End Date</label>
           <input type="date" name="endDate" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-600" required>
         </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2">Calculated Budget (USD)</label>
+          <input type="text" id="calculatedBudget" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-600" readonly>
+        </div>
         <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Generate Package</button>
       </form>
     </div>
   </section>
 
+  <script>
+    // Pricing for each place (per day)
+    const pricing = {
+      Sigiriya: 50,
+      Yala: 70,
+      Kandy: 40,
+      Galle: 30,
+      Mirissa: 60,
+    };
+
+    // Function to calculate the budget
+    function calculateBudget() {
+      const startDate = new Date(document.querySelector('input[name="startDate"]').value);
+      const endDate = new Date(document.querySelector('input[name="endDate"]').value);
+      const selectedPlaces = Array.from(document.querySelectorAll('input[name="places"]:checked')).map((el) => el.value);
+
+      if (!startDate || !endDate || selectedPlaces.length === 0) {
+        document.getElementById('calculatedBudget').value = '';
+        return;
+      }
+
+      // Calculate the number of days
+      const timeDiff = endDate - startDate;
+      const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) + 1; // Include both start and end dates
+
+      // Calculate the total budget
+      const totalBudget = selectedPlaces.reduce((total, place) => total + pricing[place] * daysDiff, 0);
+
+      // Display the calculated budget
+      document.getElementById('calculatedBudget').value = `$${totalBudget}`;
+    }
+
+    // Attach event listeners
+    document.querySelectorAll('input[name="places"]').forEach((input) => {
+      input.addEventListener('change', calculateBudget);
+    });
+
+    document.querySelector('input[name="startDate"]').addEventListener('change', calculateBudget);
+    document.querySelector('input[name="endDate"]').addEventListener('change', calculateBudget);
+
+    // Handle form submission
+    document.getElementById('packageForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const selectedPlaces = formData.getAll('places');
+      const startDate = formData.get('startDate');
+      const endDate = formData.get('endDate');
+      const budget = document.getElementById('calculatedBudget').value;
+
+      alert(`Package Created!\nPlaces: ${selectedPlaces.join(', ')}\nStart Date: ${startDate}\nEnd Date: ${endDate}\nBudget: ${budget}`);
+    });
+  </script>
+</body>
+</html>
   <!-- Blog Section -->
   <section id="blog" class="bg-gray-50 py-12">
     <div class="container mx-auto px-6">
