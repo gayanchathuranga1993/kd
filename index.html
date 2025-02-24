@@ -105,6 +105,34 @@
     </div>
   </header>
 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceylon ODC - Create Package</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-blue-600">Ceylon ODC</a>
+      <nav class="space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="custom-package.html" class="text-gray-700 hover:text-blue-600">Create Package</a>
+        <a href="#blog" class="text-gray-700 hover:text-blue-600">Blog</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
   <!-- Custom Package Page -->
   <section id="custom-package" class="container mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold text-center mb-8">Create Your Custom Package</h2>
@@ -191,41 +219,6 @@
   </script>
 </body>
 </html>
-  <!-- Blog Section -->
-  <section id="blog" class="bg-gray-50 py-12">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Travel Blog</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Blog Post 1 -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale" data-aos="fade-up" data-aos-delay="200">
-          <img src="yves-alarie-yaGheETUSK4-unsplash.jpg" alt="Kandy" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Exploring Kandy</h3>
-            <p class="text-gray-700 mb-4">Discover the cultural heart of Sri Lanka.</p>
-            <button onclick="openBlogModal('Exploring Kandy', 'Kandy is a city in the central highlands of Sri Lanka, known for its rich history and cultural significance. The Temple of the Tooth Relic is a must-visit.')" class="text-blue-600 hover:underline">Read More</button>
-          </div>
-        </div>
-        <!-- Blog Post 2 -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale" data-aos="fade-up" data-aos-delay="400">
-          <img src="alex-azabache-TvIR3JAV2ME-unsplash.jpg" alt="Ella" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Hiking in Ella</h3>
-            <p class="text-gray-700 mb-4">Adventure awaits in the hills of Ella.</p>
-            <button onclick="openBlogModal('Hiking in Ella', 'Ella is a small town in the Badulla District, known for its lush green hills and stunning waterfalls. Popular hikes include Ella Rock and Little Adam\'s Peak.')" class="text-blue-600 hover:underline">Read More</button>
-          </div>
-        </div>
-        <!-- Blog Post 3 -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-scale" data-aos="fade-up" data-aos-delay="600">
-          <img src="pexels-thilina-alagiyawanna-3266092-27669334.jpg" alt="Galle" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Historic Galle Fort</h3>
-            <p class="text-gray-700 mb-4">Step back in time at Galle Fort.</p>
-            <button onclick="openBlogModal('Historic Galle Fort', 'Galle Fort is a UNESCO World Heritage Site, known for its colonial architecture and stunning ocean views.')" class="text-blue-600 hover:underline">Read More</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Blog Modal -->
   <div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
