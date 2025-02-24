@@ -154,30 +154,45 @@
 </body>
 </html>
 
-  <!-- Blog Modal -->
-  <div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
-    <div class="bg-white p-8 rounded-lg w-11/12 md:w-1/2">
-      <h2 id="blogTitle" class="text-2xl font-bold mb-4"></h2>
-      <p id="blogContent" class="text-gray-700 mb-4"></p>
-      <button onclick="closeBlogModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Close</button>
-    </div>
-  </div>
+ function openBlogModal(title, content) {
+  document.getElementById('blogTitle').innerText = title;
+  document.getElementById('blogContent').innerText = content;
+  document.getElementById('blogModal').classList.remove('hidden');
+}
 
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ceylon ODC - WhatsApp Chat</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
-</head>
-<body class="bg-gray-100">
+function closeBlogModal() {
+  document.getElementById('blogModal').classList.add('hidden');
+} 
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+  <img src="sri-lanka-blog.jpg" alt="Sri Lanka" class="w-full h-48 object-cover">
+  <div class="p-6">
+    <h3 class="text-xl font-bold mb-2">Discover the Wonders of Sri Lanka</h3>
+    <p class="text-gray-700 mb-4">Explore the cultural heritage, natural beauty, and culinary delights of Sri Lanka.</p>
+    <button onclick="openBlogModal('Discover the Wonders of Sri Lanka', 'Sri Lanka, often referred to as the \"Pearl of the Indian Ocean,\" is a tropical paradise that offers a diverse range of experiences for travelers...')" class="text-blue-600 hover:underline">Read More</button>
+  </div>
+</div>
+<!-- Blog Modal -->
+<div id="blogModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+  <div class="bg-white p-8 rounded-lg w-11/12 md:w-1/2">
+    <h2 id="blogTitle" class="text-2xl font-bold mb-4">Discover the Wonders of Sri Lanka</h2>
+    <p id="blogContent" class="text-gray-700 mb-4">
+      Sri Lanka, often referred to as the "Pearl of the Indian Ocean," is a tropical paradise that offers a diverse range of experiences for travelers. From pristine beaches and lush tea plantations to ancient temples and wildlife safaris, Sri Lanka is a destination that captivates the hearts of all who visit.
+
+      **Cultural Heritage**: Sri Lanka is home to a rich cultural heritage that dates back over 2,500 years. The ancient city of Sigiriya, a UNESCO World Heritage Site, is a must-visit. Known as the "Lion Rock," this massive fortress rises dramatically from the surrounding plains and offers breathtaking views from its summit. Another iconic site is the Temple of the Tooth Relic in Kandy, which houses a sacred tooth of the Buddha and is a significant pilgrimage site for Buddhists.
+
+      **Natural Beauty**: The island's natural beauty is unparalleled. The Ella region, nestled in the central highlands, is famous for its rolling hills, tea plantations, and stunning waterfalls like Ravana Falls. For beach lovers, the golden sands of Mirissa and Unawatuna offer the perfect escape, while Yala National Park provides an opportunity to spot leopards, elephants, and a variety of bird species.
+
+      **Adventure and Wildlife**: Sri Lanka is a haven for adventure enthusiasts. Hike to the top of Adam's Peak for a sunrise view that will leave you in awe, or explore the Sinharaja Rainforest, a biodiversity hotspot. Wildlife lovers can embark on a safari in Udawalawe National Park, where herds of elephants roam freely, or visit Pinnawala Elephant Orphanage to learn about elephant conservation.
+
+      **Culinary Delights**: Sri Lankan cuisine is a flavorful blend of spices, coconut, and fresh ingredients. Don't miss out on trying hoppers (bowl-shaped pancakes), kottu roti (chopped roti with vegetables and meat), and string hoppers (steamed rice noodles). Pair your meal with a cup of Ceylon tea, renowned worldwide for its rich flavor.
+
+      **Warm Hospitality**: One of the most memorable aspects of Sri Lanka is the warmth and hospitality of its people. Whether you're staying in a luxury resort or a homestay, you'll be greeted with genuine smiles and a willingness to share their culture and traditions.
+
+      **Why Visit Sri Lanka?**: Sri Lanka is a destination that offers something for everyone. Whether you're seeking adventure, relaxation, or cultural immersion, this island nation promises an unforgettable experience. Pack your bags and get ready to explore the wonders of Sri Lanka!
+    </p>
+    <button onclick="closeBlogModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Close</button>
+  </div>
+</div> 
   <!-- Header -->
   <header class="bg-white shadow-lg">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
