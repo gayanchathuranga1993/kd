@@ -163,10 +163,77 @@
     </div>
   </div>
 
-  <a href="https://wa.me/94771234567?text=Hi%20Ceylon%20ODC,%20I%20have%20a%20question" target="_blank">
-  Chat on WhatsApp
-</a>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceylon ODC - WhatsApp Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-blue-600">Ceylon ODC</a>
+      <nav class="space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="custom-package.html" class="text-gray-700 hover:text-blue-600">Create Package</a>
+        <a href="#blog" class="text-gray-700 hover:text-blue-600">Blog</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
 
+  <!-- WhatsApp Chat Button -->
+  <div id="whatsappChat" class="fixed bottom-4 right-4">
+    <a href="https://wa.me/94771234567?text=Hi%20Ceylon%20ODC,%20I%20have%20a%20question" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
+        <path d="M12 2a10 10 0 0 1 8.17 15.8l1.9 1.9a1 1 0 0 1-1.42 1.42l-1.9-1.9A10 10 0 1 1 12 2zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm3.71 10.29a1 1 0 0 1-1.42 0L12 13.41l-2.29 2.3a1 1 0 1 1-1.42-1.42l2.3-2.29-2.3-2.29a1 1 0 1 1 1.42-1.42L12 10.59l2.29-2.3a1 1 0 1 1 1.42 1.42l-2.3 2.29 2.3 2.29a1 1 0 0 1 0 1.42z"/>
+      </svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+
+  <!-- Backend Server (Node.js Example) -->
+  <script type="module">
+    // Example backend server for WhatsApp bot
+    const express = require('express');
+    const twilio = require('twilio');
+    const app = express();
+    const port = 3000;
+
+    // Twilio credentials
+    const accountSid = 'your_account_sid';
+    const authToken = 'your_auth_token';
+    const client = twilio(accountSid, authToken);
+
+    // Handle incoming WhatsApp messages
+    app.post('/whatsapp/webhook', (req, res) => {
+      const incomingMessage = req.body.Body;
+      const from = req.body.From;
+
+      // Send an automated reply
+      client.messages.create({
+        body: `Hi! Thanks for messaging Ceylon ODC. We'll get back to you shortly.`,
+        from: 'whatsapp:+14155238886', // Twilio WhatsApp Sandbox number
+        to: from,
+      });
+
+      res.status(200).send('Message received');
+    });
+
+    // Start the server
+    app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
+  </script>
+</body>
+</html> 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white py-8">
     <div class="container mx-auto px-6 text-center">
